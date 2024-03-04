@@ -24,11 +24,16 @@ namespace Inventory.Controllers
         }
 
         [HttpPost]
-        public ActionResult Dashboard(string txtName)
+        public ActionResult Dashboard(FormCollection frm, string btnSubmit)
         {
             List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
             ViewBag.plstData = plstData;
-            ViewBag.txtName = txtName;
+            ViewBag.txtName = "";
+            if (btnSubmit == "Search")
+            {
+                ViewBag.txtName = frm["txtName"].ToString();
+            }
+                        
             return View();
         }
 
