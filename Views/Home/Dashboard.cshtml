@@ -30,27 +30,49 @@
 </style>
 
 
-@{ 
-    List<BaseEquipment> pListData = (List<BaseEquipment>)ViewBag.plstData;
-    <div id="dvTbleBorder" style="height:400px;width:500px; overflow:auto; border: 1px solid #808080;">
-        <h4>Equipment List</h4>
-        <table>            
-            <tr style="position: sticky;">
-                <th>Name</th>
-                <th>Count</th>
-                <th>Entry Date</th>
-            </tr>
+<form action="/Home/Dashboard" method="Post">
+    @*@using (Html.BeginForm())*@
+    @{
 
-            @foreach (BaseEquipment obj in pListData)
-            {
-                <tr class="clsTrContent">
-                    <td>@obj.Name</td>
-                    <td>@obj.EcCount</td>
-                    <td>@obj.EntryDate.ToString()</td>
+        List<BaseEquipment> pListData = (List<BaseEquipment>)ViewBag.plstData;
+        <div id="dvTbleBorder" style="height:400px;width:500px; overflow:auto; border: 1px solid #808080;">
+            <h4>Equipment List</h4>
+            Equipment Name: <input type="text" id="txtName" name="txtName" />
+            <input type="button" value="Search" />
+            <table>
+                <tr style="position: sticky;">
+                    <th>Name</th>
+                    <th>Count</th>
+                    <th>Entry Date</th>
                 </tr>
-            }
-        </table>
-    </div>
 
-    
+                @foreach (BaseEquipment obj in pListData)
+                {
+                    if (ViewBag.txtName!="")
+                    {
+                        if (obj.Name == ViewBag.txtName)
+                        {
+                            <tr class="clsTrContent">
+                                <td>@obj.Name</td>
+                                <td>@obj.EcCount</td>
+                                <td>@obj.EntryDate.ToString()</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="clsTrContent">
+                            <td>@obj.Name</td>
+                            <td>@obj.EcCount</td>
+                            <td>@obj.EntryDate.ToString()</td>
+                        </tr>
+                    }
+
+
+                }
+            </table>
+        </div>
+
+
     }
+</form>
