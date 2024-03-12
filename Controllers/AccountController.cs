@@ -13,7 +13,8 @@ namespace Inventory.Controllers
         {
             return View();
         }
-        public ActionResult Login2()
+        [HttpPost]
+        public ActionResult Login(string UserName, string Password)
         {
             return View();
         }

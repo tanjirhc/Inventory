@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using System.Linq.Expressions;
 
 namespace Inventory.Controllers
 {
@@ -17,10 +18,17 @@ namespace Inventory.Controllers
 
         public ActionResult Dashboard()
         {
-            List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
-            ViewBag.plstData = plstData;
-            ViewBag.txtName = "";
-            return View();
+            if (Session["User"]!= null)
+            {
+                List<BaseEquipment> plstData = BaseEquipment.ListEquipmentData();
+                ViewBag.plstData = plstData;
+                ViewBag.txtName = "";
+                return View();
+            } 
+            else 
+            { 
+                return RedirectToAction("Login","Account");
+            }
         }
 
         [HttpPost]
