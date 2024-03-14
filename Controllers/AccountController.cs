@@ -50,5 +50,11 @@ namespace Inventory.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            Session["User"] = null;
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

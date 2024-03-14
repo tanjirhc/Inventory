@@ -31,7 +31,7 @@
                         <span>User:@Session["User"]</span>
                     }
                 }
-                @using (Html.BeginForm("Logout", "Account"))
+                @using (Html.BeginForm("Logout", "Account", FormMethod.Post))
                 {
                     <input type="submit" name="btnLogout" value="LogOut" />
                 }
