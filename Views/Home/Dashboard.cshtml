@@ -73,7 +73,21 @@
                 }
             </table>
         </div>
+        <div id="dvTbleBorder" style="height:400px;width:500px; overflow:auto; border: 1px solid #808080;">
+            <h4>Entry Panel</h4>
+            @{
+                FormCollection frm = new FormCollection();
+                string txtEquipment = "";
+                if (ViewBag.FormCollection!=null)
+                {
+                    frm = (FormCollection)ViewBag.FormCollection;
+                    txtEquipment = frm["txtEquipment"].ToString();
+                }
+              }
+            <input type="text" name="txtEquipment" value="@txtEquipment"/>
+            <input type="submit" name="btnSubmit" value="SaveEquip"/>
+        </div>
 
 
-    }
-</form>
+            }
+    </form>

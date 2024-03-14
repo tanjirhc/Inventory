@@ -41,7 +41,7 @@ namespace Inventory.Controllers
             {
                 ViewBag.txtName = frm["txtName"].ToString();
             }
-                        
+            ViewBag.FormCollection = frm;
             return View();
         }
 
