@@ -18,5 +18,18 @@ namespace Inventory.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult ForgetPassword(string btnSubmit)
+        {        
+            if (btnSubmit == "Forget Password")
+            {
+                return RedirectToAction("forget", "Account");
+            }
+            return RedirectToAction("Login", "Account");
+        }
+        public ActionResult forget()
+        {
+            return View();
+        }
     }
 }
