@@ -24,6 +24,14 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
+            <div style="absolute; right:5px; height:100%; width:150px;">
+                @{ 
+                    if(Session["User"]!=null)
+                    {
+                                <span>User:@Session["User"]</span>
+                    }
+                }
+            </div>
         </div>
     </nav>
     <div id="dvLeftBar" style="border: 1px solid red; width: 200px;  position:fixed;background:#00ff21;top: 56px;left: 0px;bottom: 0px;">

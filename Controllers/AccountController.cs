@@ -14,19 +14,31 @@ namespace Inventory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string UserName, string Password)
+        public ActionResult Login(string btnSubmit, string txtUserName, string txtPassword)
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult ForgetPassword(string btnSubmit)
-        {        
-            if (btnSubmit == "Forget Password")
+            if (btnSubmit == "Login")
+            {
+                if (txtUserName == "Tanjir" && txtPassword == "1234")
+                {
+                    Session["User"] = "Tanjir";
+                    return RedirectToAction("Dashboard", "Home");
+                }                
+            }
+            else if (btnSubmit == "Forget Password")
             {
                 return RedirectToAction("forget", "Account");
             }
-            return RedirectToAction("Login", "Account");
+            return View();
         }
+        [HttpPost]
+        //public ActionResult ForgetPassword(string btnSubmit)
+        //{        
+        //    if (btnSubmit == "Forget Password")
+        //    {
+        //        return RedirectToAction("forget", "Account");
+        //    }
+        //    return RedirectToAction("Login", "Account");
+        //}
         public ActionResult forget()
         {
             return View();
