@@ -14,9 +14,7 @@ namespace Inventory.Models
         {
             if (this.UserName == "Tanjir" && this.Password == "1234")
             {
-                Session["User"] = "Tanjir";
-                LoginMsg = "Login Success";
-                return RedirectToAction("Dashboard", "Home");
+                return true;
             }
             return false;
         }
