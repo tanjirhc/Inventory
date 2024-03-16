@@ -21,13 +21,14 @@ namespace Inventory.Controllers
             string LoginMsg = "";
             if (btnSubmit == "Login")
             {
-                baseAccount.VerifyLogin();
-                //if (baseAccount.UserName == "Tanjir" && baseAccount.Password == "1234")
-                //{
-                //    Session["User"] = "Tanjir";
-                //    LoginMsg = "Login Success";
-                //    return RedirectToAction("Dashboard", "Home");
-                //}
+                bool verifyStatus=baseAccount.VerifyLogin();
+                if (verifyStatus)
+                {
+                    Session["User"] = "Tanjir";
+                    LoginMsg = "Login Success";
+                    return RedirectToAction("Dashboard", "Home");
+                }
+                
                 //else
                 //{
                 //    LoginMsg = "Failed, Username/Password Not Matched";
