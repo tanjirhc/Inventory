@@ -15,8 +15,11 @@ namespace Inventory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string btnSubmit, BaseAccount baseAccount)
+        public ActionResult Login(string btnSubmit, string txtUserName, string pass)
         {
+            BaseAccount baseAccount = new BaseAccount();
+            baseAccount.UserName = txtUserName;
+            
             string LoginMsg = "";
             if (btnSubmit == "Login")
             {
