@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inventory.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,12 +15,12 @@ namespace Inventory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string btnSubmit, string txtUserName, string txtPassword)
+        public ActionResult Login(string btnSubmit, BaseAccount baseAccount)
         {
             string LoginMsg = "";
             if (btnSubmit == "Login")
             {
-                if (txtUserName == "Tanjir" && txtPassword == "1234")
+                if (baseAccount.UserName == "Tanjir" && baseAccount.Password == "1234")
                 {
                     Session["User"] = "Tanjir";
                     LoginMsg = "Login Success";
