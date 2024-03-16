@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -12,6 +14,11 @@ namespace Inventory.Models
 
         public bool VerifyLogin()
         {
+            string ConnString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+
+            SqlConnection sqlConnection = new SqlConnection(ConnString);
+            sqlConnection.Open();
+
             if (this.UserName == "Tanjir" && this.Password == "1234")
             {
                 return true;
