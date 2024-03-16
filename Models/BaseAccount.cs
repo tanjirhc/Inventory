@@ -22,7 +22,7 @@ namespace Inventory.Models
             SqlCommand cmd = sqlConnection.CreateCommand();
             cmd.CommandText = "";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
+            cmd.CommandTimeout = 0;
             if (this.UserName == "Tanjir" && this.Password == "1234")
             {
                 return true;
