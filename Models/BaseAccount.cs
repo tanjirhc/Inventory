@@ -23,7 +23,7 @@ namespace Inventory.Models
             sqlConnection.Open();
 
             SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = "";
+            cmd.CommandText = "dbo.spOst_LstMember";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandTimeout = 0;
             
