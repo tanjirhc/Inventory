@@ -19,6 +19,10 @@ namespace Inventory.Models
             SqlConnection sqlConnection = new SqlConnection(ConnString);
             sqlConnection.Open();
 
+            SqlCommand cmd = sqlConnection.CreateCommand();
+            cmd.CommandText = "";
+            cmd.CommandType = "";
+
             if (this.UserName == "Tanjir" && this.Password == "1234")
             {
                 return true;
