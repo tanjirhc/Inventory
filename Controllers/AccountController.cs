@@ -28,11 +28,10 @@ namespace Inventory.Controllers
                     LoginMsg = "Login Success";
                     return RedirectToAction("Dashboard", "Home");
                 }
-                
-                //else
-                //{
-                //    LoginMsg = "Failed, Username/Password Not Matched";
-                //}
+                else
+                {
+                    LoginMsg = "Failed, Username/Password Not Matched";
+                }
             }
             else if (btnSubmit == "Forget Password")
             {
