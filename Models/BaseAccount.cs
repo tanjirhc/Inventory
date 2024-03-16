@@ -24,7 +24,7 @@ namespace Inventory.Models
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandTimeout = 0;
 
-
+            SqlDataAdapter adapter = new SqlDataAdapter();
 
             if (this.UserName == "Tanjir" && this.Password == "1234")
             {
