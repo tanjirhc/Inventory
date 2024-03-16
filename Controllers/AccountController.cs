@@ -24,7 +24,7 @@ namespace Inventory.Controllers
                 bool verifyStatus=baseAccount.VerifyLogin();
                 if (verifyStatus)
                 {
-                    Session["User"] = "Tanjir";
+                    Session["User"] = baseAccount.UserName;
                     LoginMsg = "Login Success";
                     return RedirectToAction("Dashboard", "Home");
                 }
