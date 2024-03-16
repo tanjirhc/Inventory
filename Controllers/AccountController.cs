@@ -15,24 +15,23 @@ namespace Inventory.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(string btnSubmit, string txtUserName, string pass)
+        public ActionResult Login(string btnSubmit, BaseAccount baseAccount)
         {
-            BaseAccount baseAccount = new BaseAccount();
-            baseAccount.UserName = txtUserName;
-            
+                       
             string LoginMsg = "";
             if (btnSubmit == "Login")
             {
-                if (baseAccount.UserName == "Tanjir" && baseAccount.Password == "1234")
-                {
-                    Session["User"] = "Tanjir";
-                    LoginMsg = "Login Success";
-                    return RedirectToAction("Dashboard", "Home");
-                }
-                else
-                {
-                    LoginMsg = "Failed, Username/Password Not Matched";
-                }
+                baseAccount.VerifyLogin();
+                //if (baseAccount.UserName == "Tanjir" && baseAccount.Password == "1234")
+                //{
+                //    Session["User"] = "Tanjir";
+                //    LoginMsg = "Login Success";
+                //    return RedirectToAction("Dashboard", "Home");
+                //}
+                //else
+                //{
+                //    LoginMsg = "Failed, Username/Password Not Matched";
+                //}
             }
             else if (btnSubmit == "Forget Password")
             {
