@@ -26,7 +26,7 @@ namespace Inventory.Models
             cmd.CommandText = "";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandTimeout = 0;
-
+            
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dataTable);
 
