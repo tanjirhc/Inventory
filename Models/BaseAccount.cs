@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,8 @@ namespace Inventory.Models
 
         public bool VerifyLogin()
         {
+            DataTable dataTable = new DataTable();
+
             string ConnString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
 
             SqlConnection sqlConnection = new SqlConnection(ConnString);
@@ -25,6 +28,7 @@ namespace Inventory.Models
             cmd.CommandTimeout = 0;
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dataTable);
 
             if (this.UserName == "Tanjir" && this.Password == "1234")
             {
