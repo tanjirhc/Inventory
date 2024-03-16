@@ -12,7 +12,7 @@ namespace Inventory.Models
 
         public bool VerifyLogin()
         {
-            if (baseAccount.UserName == "Tanjir" && baseAccount.Password == "1234")
+            if (this.UserName == "Tanjir" && this.Password == "1234")
             {
                 Session["User"] = "Tanjir";
                 LoginMsg = "Login Success";
