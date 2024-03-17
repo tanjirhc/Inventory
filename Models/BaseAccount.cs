@@ -19,7 +19,7 @@ namespace Inventory.Models
             DataTable dataTable = new DataTable();
 
             string ConnString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
-            string AppName = ConfigurationManager.AppSettings["ApplicationName"].ToString();
+            
             //ApplicationName
             SqlConnection connection = new SqlConnection(ConnString);
             connection.Open();
