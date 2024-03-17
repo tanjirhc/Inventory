@@ -21,19 +21,19 @@ namespace Inventory.Models
 
             SqlConnection sqlConnection = new SqlConnection(ConnString);
             sqlConnection.Open();
-
             SqlCommand cmd = sqlConnection.CreateCommand();
-            cmd.CommandText = "dbo.spOst_LstMember";
+            cmd.CommandText = "spOst_LstUsers";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandTimeout = 0;
-            
+            cmd.CommandTimeout = 0;                      
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dataTable);
+            cmd.Dispose();
+            sqlConnection.Close();
 
-            if (this.UserName == "Tanjir" && this.Password == "1234")
-            {
-                return true;
-            }
+            //if (this.UserName == "Tanjir" && this.Password == "1234")
+            //{
+            //    return true;
+            //}
             return false;
         }
     }
