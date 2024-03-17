@@ -19,12 +19,17 @@ namespace Inventory.Models
             DataTable dataTable = new DataTable();
 
             string ConnString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
-
+            string AppName = ConfigurationManager.AppSettings["ApplicationName"].ToString();
+            //ApplicationName
             SqlConnection connection = new SqlConnection(ConnString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand();
+            SqlCommand cmd = connection.CreateCommand();
             cmd.Connection = connection;
+
             cmd.CommandText = "spOst_LstUsers";
+            cmd.Parameters.Clear();
+            cmd.Parameters.Add(new SqlParameter("@UserName", this.UserName));
+            cmd.Parameters.Add(new SqlParameter("@Password", this.Password));
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandTimeout = 0;                      
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -32,7 +37,12 @@ namespace Inventory.Models
             cmd.Dispose();
             connection.Close();
 
-            
+            if (dataTable.Rows.Count>0)
+            {
+                return true;
+            }
+
+
             //var pdata =(from p in dataTable.AsEnumerable() 
             //            where p.Field<string>("Username") ==this.UserName && p.Field<string>("Password")==this.Password                        select new
             //            {
