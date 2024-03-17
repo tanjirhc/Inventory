@@ -33,16 +33,16 @@ namespace Inventory.Models
             connection.Close();
 
             
-            var pdata =(from p in dataTable.AsEnumerable() 
-                        where p.Field<string>("Username") ==this.UserName && p.Field<string>("Password")==this.Password                        select new
-                        {
-                            UserName = p.Field<string>("Username")
-                        }
-                        ).SingleOrDefault();
-            if (pdata!=null)
-            {
-                return true;
-            }
+            //var pdata =(from p in dataTable.AsEnumerable() 
+            //            where p.Field<string>("Username") ==this.UserName && p.Field<string>("Password")==this.Password                        select new
+            //            {
+            //                UserName = p.Field<string>("Username")
+            //            }
+            //            ).SingleOrDefault();
+            //if (pdata!=null)
+            //{
+            //    return true;
+            //}
             return false;
         }
     }
