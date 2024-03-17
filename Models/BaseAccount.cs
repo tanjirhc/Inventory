@@ -8,6 +8,7 @@ using System.Web;
 
 namespace Inventory.Models
 {
+    [Serializable]
     public class BaseAccount
     {
         public string UserName { get; set; }
@@ -19,21 +20,29 @@ namespace Inventory.Models
 
             string ConnString = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
 
-            SqlConnection sqlConnection = new SqlConnection(ConnString);
-            sqlConnection.Open();
-            SqlCommand cmd = sqlConnection.CreateCommand();
+            SqlConnection connection = new SqlConnection(ConnString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
             cmd.CommandText = "spOst_LstUsers";
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandTimeout = 0;                      
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dataTable);
             cmd.Dispose();
-            sqlConnection.Close();
+            connection.Close();
 
-            //if (this.UserName == "Tanjir" && this.Password == "1234")
-            //{
-            //    return true;
-            //}
+            
+            var pdata =(from p in dataTable.AsEnumerable() 
+                        where p.Field<string>("Username") ==this.UserName && p.Field<string>("Password")==this.Password                        select new
+                        {
+                            UserName = p.Field<string>("Username")
+                        }
+                        ).SingleOrDefault();
+            if (pdata!=null)
+            {
+                return true;
+            }
             return false;
         }
     }
